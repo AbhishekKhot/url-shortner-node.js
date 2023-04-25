@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
             short_url: {
                 type: DataTypes.STRING,
                 allowNull: false
+            },
+            visited_count: {
+                type: DataTypes.INTEGER
             }
         },
         {

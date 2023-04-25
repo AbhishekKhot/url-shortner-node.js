@@ -20,7 +20,18 @@ const getShortUrlSchema = {
     }
 }
 
+const updateVisitedCountSchema = {
+    schema: {
+        response: {
+            200: {
+                type: 'integer'
+            }
+        }
+    }
+}
+
 module.exports = {
     createShortUrlSchema,
-    getShortUrlSchema
+    getShortUrlSchema,
+    updateVisitedCountSchema
 }

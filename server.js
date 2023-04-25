@@ -10,14 +10,14 @@ fastify.register(require("./routes/url.js"), { prefix: "/urlshortner" });
 
 const start = async () => {
     try {
-        await fastify.listen({ port: PORT })
+        await fastify.listen({ port: PORT, host: 'localhost' });
     } catch (error) {
         process.exit(1);
     }
 }
 
 db.sequelize
-    .sync({ alter: true })
+    .sync({ force: true })
     .then(() => {
         console.log("Synched successfully with database")
         start();

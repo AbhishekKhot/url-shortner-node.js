@@ -1,11 +1,13 @@
 const {
     createShortUrlHandler,
-    getShortUrlHandler
+    getShortUrlHandler,
+    updateVisitedCountHandler
 } = require('../controller/handler/url');
 
 const {
     createShortUrlSchema,
-    getShortUrlSchema
+    getShortUrlSchema,
+    updateVisitedCountSchema
 } = require('../controller/schema/url');
 
 module.exports = (fastify, options, done) => {
@@ -16,6 +18,10 @@ module.exports = (fastify, options, done) => {
     fastify.get('/:id', {
         schema: getShortUrlSchema,
         handler: getShortUrlHandler
+    })
+    fastify.put('/:url', {
+        schema: updateVisitedCountSchema,
+        handler: updateVisitedCountHandler
     })
     done()
 }

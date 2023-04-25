@@ -10,10 +10,18 @@ async function createShortUrlHandler(req, reply) {
 
 async function getShortUrlHandler(req, reply) {
     const data = await UrlService.getShortUrl(req.params)
-    reply.status(HTTPStatus.OK.code).send({ data });
+    reply.status(HTTPStatus.OK.code).send(data);
+}
+
+async function updateVisitedCountHandler(req, reply) {
+    const visited_count = await UrlService.updateUrlVisitedCount(req.params)
+    reply
+        .status(HTTPStatus.OK.code)
+        .send({ message: "visited count updated successfully", count: visited_count })
 }
 
 module.exports = {
     createShortUrlHandler,
-    getShortUrlHandler
+    getShortUrlHandler,
+    updateVisitedCountHandler
 }
